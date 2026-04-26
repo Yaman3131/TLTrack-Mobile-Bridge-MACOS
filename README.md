@@ -165,7 +165,7 @@ If you restart your computer, follow these 3 steps:
 
 ---
 
-
+# FOR TURKİSH
 
 ---
 
