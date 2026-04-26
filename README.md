@@ -215,9 +215,54 @@ Eğer web arayüzünde "Cloud Sync" kutucuğuna tıklayamıyorsanız veya fiyatl
   ```
 
 **3. Uygulamayı tekrar başlatın.** Artık Cloud Sync kutucuğunun aktif olduğunu ve fiyatların internetten akmaya başladığını göreceksiniz.
-
 ---
 
+## 🔄 GÜNLÜK KULLANIM: SİSTEMİ YENİDEN BAŞLATMA
+
+Bilgisayarınızı kapattıktan sonra sistemi tekrar ayağa kaldırmak için şu 3 adımı uygulamanız yeterlidir. (Kurulumları zaten yaptığınızı varsayıyoruz).
+
+### 1. ADB Bağlantısını Yenileyin
+Cihazınız kablosuz bağlıysa Terminal/PowerShell açıp şu komutu yazın:
+```bash
+adb connect TABLET_IP_ADRESINIZ:5555
+```
+
+### 2. Veri Köprüsünü (Data Bridge) Çalıştırın
+Bu komut Masaüstündeki klasörü kontrol eder ve veri çekmeye başlar.
+
+**macOS:**
+```bash
+mkdir -p ~/Desktop/TLI_Data && while true; do adb pull "/sdcard/Android/data/com.xd.TLglobal/files/UE4Game/UE_game/UE_game/Saved/Logs/UE_game.log" ~/Desktop/TLI_Data/UE_game.log.tmp > /dev/null 2>&1; mv ~/Desktop/TLI_Data/UE_game.log.tmp ~/Desktop/TLI_Data/UE_game.log; echo -n "."; sleep 5; done
+```
+
+**Windows (PowerShell):**
+```powershell
+if (!(Test-Path "$HOME\Desktop\TLI_Data")) { New-Item -ItemType Directory -Path "$HOME\Desktop\TLI_Data" }; while($true) { adb pull "/sdcard/Android/data/com.xd.TLglobal/files/UE4Game/UE_game/UE_game/Saved/Logs/UE_game.log" "$HOME\Desktop\TLI_Data\UE_game.log.tmp"; Move-Item -Force "$HOME\Desktop\TLI_Data\UE_game.log.tmp" "$HOME\Desktop\TLI_Data\UE_game.log"; Write-Host -NoNewline "."; Start-Sleep -Seconds 5 }
+```
+
+### 3. TITrack Analiz ve Web Sunucusunu Başlatın
+İki ayrı pencerede şu komutları çalıştırın (Yolların doğruluğundan emin olun):
+
+**Pencere A (Analiz - Tail):**
+```bash
+# Mac için:
+cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack tail ~/Desktop/TLI_Data/UE_game.log
+
+# Windows için:
+cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack tail "$HOME\Desktop\TLI_Data\UE_game.log"
+```
+
+**Pencere B (Web Sunucu - Serve):**
+```bash
+# Mac için:
+cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack serve --no-window
+
+# Windows için:
+cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack serve --no-window
+```
+
+> [!CAUTION]
+> Tabletinizi tamamen kapatıp açtıysanız, kablosuz bağlantının tekrar aktif olması için bir kez kabloyla bağlayıp `adb tcpip 5555` komutunu vermeniz gerekebilir.
 
 
 
