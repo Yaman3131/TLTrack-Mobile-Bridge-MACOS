@@ -1,6 +1,11 @@
 # TLTrack-Mobile-Bridge
 
-##WİNDOWS
+
+
+# WİNDOWS
+
+---
+
 ---
 
 ### Adım 1: Android Cihazı Hazırlama (Telefon/Tablet)
@@ -97,7 +102,7 @@ Yazdığınızda listede hem cihaz ID'sini hem de IP adresini `device` olarak g�
 
 ---
 
-##**MACOS**
+# MACOS
 
 ## Adım 1: Android Cihazda "Hata Ayıklama" Modunu Açmak
 Android cihazlar varsayılan olarak dışarıdan erişime kapalıdır. Bunu açmak için:
