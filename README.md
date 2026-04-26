@@ -21,31 +21,6 @@ This section covers setting up the bridge to transfer game logs from your Androi
 
 ---
 
-# 🪟 WINDOWS SETUP
-
-### Step 1: Prepare Your Android Device
-1.  Go to **Settings > About Phone**.
-2.  Tap **Build Number** 7 times rapidly until "Developer Options" is enabled.
-3.  Enter **Developer Options** and enable **USB Debugging**.
-
-### Step 2: Download ADB Tools
-1.  Download the Windows version of [Google Platform Tools](https://developer.android.com/studio/releases/platform-tools).
-2.  Extract the ZIP file to a permanent location (e.g., `C:\adb`).
-
-### Step 3: Set System Environment Path
-1.  Search for **"Edit the system environment variables"** in the Windows search bar.
-2.  Navigate to **Environment Variables > Path > Edit > New** and add the path to your ADB folder (e.g., `C:\adb`).
-
-### Step 4: Connection & Security Authorization
-1.  Open **PowerShell** and type: `adb devices`.
-2.  **Crucial:** Check your device screen. When the "Allow USB Debugging?" prompt appears, check **"Always allow from this computer"** and tap **OK**.
-
-> [!TIP]
-> **Windows Wireless Connection:**
-> Connect via cable once and run `adb tcpip 5555`. Unplug the cable and run `adb connect YOUR_TABLET_IP:5555` to work completely wirelessly.
-
----
-
 # 🍎 MACOS SETUP
 
 ### Step 1: Enable Debugging on Android
@@ -90,13 +65,8 @@ We use a "Temp" file logic during the `adb pull` process. Bu prevents data corru
 
 ---
 
-### **A. For Windows Users**
-Open **PowerShell** and paste:
-```powershell
-if (!(Test-Path "$HOME\Desktop\TLI_Data")) { New-Item -ItemType Directory -Path "$HOME\Desktop\TLI_Data" }; while($true) { adb pull "/sdcard/Android/data/com.xd.TLglobal/files/UE4Game/UE_game/UE_game/Saved/Logs/UE_game.log" "$HOME\Desktop\TLI_Data\UE_game.log.tmp"; Move-Item -Force "$HOME\Desktop\TLI_Data\UE_game.log.tmp" "$HOME\Desktop\TLI_Data\UE_game.log"; Write-Host -NoNewline "."; Start-Sleep -Seconds 5 }
-```
 
-### **B. For macOS Users**
+
 Open **Terminal** and paste:
 ```bash
 mkdir -p ~/Desktop/TLI_Data && while true; do adb pull "/sdcard/Android/data/com.xd.TLglobal/files/UE4Game/UE_game/UE_game/Saved/Logs/UE_game.log" ~/Desktop/TLI_Data/UE_game.log.tmp > /dev/null 2>&1; mv ~/Desktop/TLI_Data/UE_game.log.tmp ~/Desktop/TLI_Data/UE_game.log; echo -n "."; sleep 5; done
@@ -108,8 +78,6 @@ mkdir -p ~/Desktop/TLI_Data && while true; do adb pull "/sdcard/Android/data/com
 
 ### 1. Clone the Project
 * **Mac:** `cd ~/Desktop && git clone https://github.com/astockman99/TITrack.git`
-* **Windows:** `winget install --id Git.Git -e --source winget
-*          cd "$HOME\Desktop"; git clone https://github.com/astockman99/TITrack.git`
 
 ### 2. Install Required Libraries
 * **Mac:**
@@ -117,18 +85,12 @@ mkdir -p ~/Desktop/TLI_Data && while true; do adb pull "/sdcard/Android/data/com
     python3 -m pip install -r ~/Desktop/TITrack/requirements.txt
     python3 -m pip install supabase postgrest --break-system-packages
     ```
-* **Windows:**
-    ```powershell
-    pip install -r "$HOME\Desktop\TITrack\requirements.txt"
-    pip install supabase postgrest
-    ```
 
 ---
 
 ## Step 7: Initial Setup (Database Init)
 *Required only once.*
 * **Mac:** `cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack init`
-* **Windows:** `cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack init`
 
 ---
 
@@ -137,11 +99,11 @@ Open **two separate** terminal windows.
 
 ### **Window A: Log Processor (Tail)**
 * **Mac:** `cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack tail ~/Desktop/TLI_Data/UE_game.log`
-* **Windows:** `cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack tail "$HOME\Desktop\TLI_Data\UE_game.log"`
+
 
 ### **Window B: Web Interface (Serve)**
 * **Mac:** `cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack serve --no-window`
-* **Windows:** `cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack serve --no-window`
+
 
 ---
 
@@ -158,7 +120,7 @@ Open **two separate** terminal windows.
 ### **⚠️ TROUBLESHOOTING: Cloud Sync Button Not Working?**
 If the "Cloud Sync" checkbox is greyed out or prices show as `0`, you are missing the cloud bridge libraries. Run this:
 * **Mac:** `python3 -m pip install supabase postgrest --break-system-packages`
-* **Windows:** `pip install supabase postgrest`
+
 
 ---
 
@@ -185,30 +147,6 @@ If you restart your computer, follow these 3 steps:
 
 Bu bölüm, Android cihazınızdaki oyun loglarını bilgisayarınıza aktarabilmeniz için gerekli olan bağlantı altyapısını kurmanızı sağlar.
 
----
-
-# 🪟 WINDOWS
-
-### Adım 1: Android Cihazı Hazırlama
-1.  **Ayarlar > Telefon Hakkında** kısmına girin.
-2.  **Yapım Numarası (Build Number)** üzerine 7 kez hızlıca tıklayarak "Geliştirici Seçeneklerini" açın.
-3.  **Geliştirici Seçenekleri** menüsüne girin ve **USB Hata Ayıklama (USB Debugging)** modunu aktif edin.
-
-### Adım 2: ADB Araçlarını İndirme
-1.  [Google Platform Tools](https://developer.android.com/studio/releases/platform-tools) sayfasından Windows sürümünü indirin.
-2.  İnen ZIP dosyasını klasöre çıkartın (Örneğin: `C:\adb`).
-
-### Adım 3: Sistem Yolu (Path) Ayarı
-1.  Arama çubuğuna **"Sistem ortam değişkenlerini düzenleyin"** yazın.
-2.  **Ortam Değişkenleri > Path > Düzenle > Yeni** yolunu izleyerek `C:\adb` klasörünü ekleyin.
-
-### Adım 4: Bağlantı ve Güvenlik Onayı
-1.  **PowerShell**'i açın ve şu komutu yazın: `adb devices`
-2.  **Önemli:** Cihaz ekranında çıkan "USB Hata Ayıklamasına izin verilsin mi?" uyarısına **"Her zaman izin ver"** diyerek onay verin.
-
-> [!TIP]
-> **Windows Kablosuz Bağlantı:**
-> Cihazı bir kez kabloyla bağlayıp `adb tcpip 5555` yazın. Ardından kabloyu çekip `adb connect TABLET_IP_ADRESI:5555` komutuyla tamamen kablosuz çalışabilirsiniz.
 
 ---
 
@@ -263,12 +201,6 @@ Doğrudan kopyalamak yerine "Temp" (Geçici dosya) mantığını kullanıyoruz. 
 
 ---
 
-### **B. Windows Kullanıcıları İçin**
-PowerShell'i açın ve aşağıdaki komutu olduğu gibi yapıştırıp Enter'a basın:
-
-```powershell
-if (!(Test-Path "$HOME\Desktop\TLI_Data")) { New-Item -ItemType Directory -Path "$HOME\Desktop\TLI_Data" }; while($true) { adb pull "/sdcard/Android/data/com.xd.TLglobal/files/UE4Game/UE_game/UE_game/Saved/Logs/UE_game.log" "$HOME\Desktop\TLI_Data\UE_game.log.tmp"; Move-Item -Force "$HOME\Desktop\TLI_Data\UE_game.log.tmp" "$HOME\Desktop\TLI_Data\UE_game.log"; Write-Host -NoNewline "."; Start-Sleep -Seconds 5 }
-```
 ### **A. macOS Kullanıcıları İçin**
 Terminal'i açın ve aşağıdaki komutu olduğu gibi yapıştırıp Enter'a basın:
 
@@ -284,7 +216,7 @@ mkdir -p ~/Desktop/TLI_Data && while true; do adb pull "/sdcard/Android/data/com
 ### **Dikkat Edilmesi Gerekenler:**
 * **Bağlantı Hatası:** Eğer noktalar ilerlemiyorsa, tabletinizin kablosunu kontrol edin veya "Kablosuz Bağlantı" adımını tekrarlayın.
 * **Dosya Yolu:** Oyunun farklı sürümlerinde (Global/Asya) dosya yolları değişebilir. Eğer hata alırsanız cihazınızdaki dosya yolunun `/sdcard/Android/data/com.xd.TLglobal/...` olduğundan emin olun.
-* **Durdurma:** İşlemi durdurmak istediğinizde Terminal penceresindeyken `Ctrl + C` tuşlarına basmanız yeterlidir.
+* **Durdurma:** İşlemi durdurmak istediğinizde Terminal penceresindeyken `cmd + C` tuşlarına basmanız yeterlidir.
 
 ---
 
@@ -299,10 +231,6 @@ Verilerimiz masaüstündeki `TLI_Data` klasörüne gelmeye başladığına göre
     ```bash
     cd ~/Desktop && git clone https://github.com/astockman99/TITrack.git
     ```
-* **Windows Kullanıcıları (PowerShell):**
-    ```powershell
-    cd "$HOME\Desktop"; git clone https://github.com/astockman99/TITrack.git
-    ```
 
 ### 2. Gerekli Kütüphaneleri Yükleyin
 Yazılımın "fiyat çekme" ve "veritabanı" özelliklerinin çalışması için şu ek paketleri yüklemeliyiz:
@@ -312,11 +240,7 @@ Yazılımın "fiyat çekme" ve "veritabanı" özelliklerinin çalışması için
     python3 -m pip install -r ~/Desktop/TITrack/requirements.txt
     python3 -m pip install supabase postgrest --break-system-packages
     ```
-* **Windows Kullanıcıları:**
-    ```powershell
-    pip install -r "$HOME\Desktop\TITrack\requirements.txt"
-    pip install supabase postgrest
-    ```
+
 
 ---
 
@@ -328,10 +252,7 @@ Yazılımı ilk kez çalıştırdığımızda, oyun içindeki eşyaların isimle
     ```bash
     cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack init
     ```
-* **Windows Kullanıcıları:**
-    ```powershell
-    cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack init
-    ```
+    
 
 ---
 
@@ -345,10 +266,6 @@ Bu işlem, masaüstüne akan logları anlık olarak okur.
     ```bash
     cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack tail ~/Desktop/TLI_Data/UE_game.log
     ```
-* **Windows:**
-    ```powershell
-    cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack tail "$HOME\Desktop\TLI_Data\UE_game.log"
-    ```
 
 ### **Pencere B: Web Sayfası (Serve)**
 Bu işlem, lootları göreceğiniz sayfayı yayınlar.
@@ -356,10 +273,7 @@ Bu işlem, lootları göreceğiniz sayfayı yayınlar.
     ```bash
     cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack serve --no-window
     ```
-* **Windows:**
-    ```powershell
-    cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack serve --no-window
-    ```
+
 
 ---
 
@@ -371,7 +285,6 @@ Her şey çalışıyorsa, artık ödülünüzü alma zamanı:
 2.  Sol menüden **Settings** (Ayarlar) sekmesine gidin.
 3.  **Game Directory** yazan yere masaüstündeki veri klasörünüzü girin:
     * **Mac:** `/Users/KullaniciAdiniz/Desktop/TLI_Data`
-    * **Windows:** `C:\Users\KullaniciAdiniz\Desktop\TLI_Data`
 4.  **Cloud Sync** kutucuğunu işaretlemeyi unutmayın!
 
 
@@ -387,11 +300,6 @@ Eğer web arayüzünde "Cloud Sync" kutucuğuna tıklayamıyorsanız veya fiyatl
 * **Mac Kullanıcıları:**
   ```bash
   python3 -m pip install supabase postgrest --break-system-packages
-  ```
-* **Windows Kullanıcıları:**
-  ```powershell
-  pip install supabase postgrest
-  ```
 
 **3. Uygulamayı tekrar başlatın.** Artık Cloud Sync kutucuğunun aktif olduğunu ve fiyatların internetten akmaya başladığını göreceksiniz.
 ---
@@ -414,10 +322,7 @@ Bu komut Masaüstündeki klasörü kontrol eder ve veri çekmeye başlar.
 mkdir -p ~/Desktop/TLI_Data && while true; do adb pull "/sdcard/Android/data/com.xd.TLglobal/files/UE4Game/UE_game/UE_game/Saved/Logs/UE_game.log" ~/Desktop/TLI_Data/UE_game.log.tmp > /dev/null 2>&1; mv ~/Desktop/TLI_Data/UE_game.log.tmp ~/Desktop/TLI_Data/UE_game.log; echo -n "."; sleep 5; done
 ```
 
-**Windows (PowerShell):**
-```powershell
-if (!(Test-Path "$HOME\Desktop\TLI_Data")) { New-Item -ItemType Directory -Path "$HOME\Desktop\TLI_Data" }; while($true) { adb pull "/sdcard/Android/data/com.xd.TLglobal/files/UE4Game/UE_game/UE_game/Saved/Logs/UE_game.log" "$HOME\Desktop\TLI_Data\UE_game.log.tmp"; Move-Item -Force "$HOME\Desktop\TLI_Data\UE_game.log.tmp" "$HOME\Desktop\TLI_Data\UE_game.log"; Write-Host -NoNewline "."; Start-Sleep -Seconds 5 }
-```
+
 
 ### 3. TITrack Analiz ve Web Sunucusunu Başlatın
 İki ayrı pencerede şu komutları çalıştırın (Yolların doğruluğundan emin olun):
@@ -427,8 +332,7 @@ if (!(Test-Path "$HOME\Desktop\TLI_Data")) { New-Item -ItemType Directory -Path 
 # Mac için:
 cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack tail ~/Desktop/TLI_Data/UE_game.log
 
-# Windows için:
-cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack tail "$HOME\Desktop\TLI_Data\UE_game.log"
+
 ```
 
 **Pencere B (Web Sunucu - Serve):**
@@ -436,8 +340,7 @@ cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack tail "$
 # Mac için:
 cd ~/Desktop/TITrack && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && python3 -m titrack serve --no-window
 
-# Windows için:
-cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack serve --no-window
+
 ```
 
 > [!CAUTION]
