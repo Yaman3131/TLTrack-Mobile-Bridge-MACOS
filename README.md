@@ -5,6 +5,7 @@
 * [English](#english-version)
 * [Türkçe](#türkçe-versiyon)
 
+* [💬 Support & Contact](#support)
 ---
 
 <a name="english-version"></a>
@@ -448,6 +449,23 @@ cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack serve -
 
 
 
+---
+<a name="support"></a>
+## 💬 Support & Contact / Destek ve İletişim
+
+### English
+If you have any questions, encounter bugs, or need help with the setup:
+* **GitHub:** You can open an [Issue](https://github.com/astockman99/TITrack/issues) on this repository.
+* **Discord:** You can reach me directly at: `Nardona`
+
+---
+
+### Türkçe
+Herhangi bir sorunuz olursa, hata ile karşılaşırsanız veya kurulumda yardıma ihtiyaç duyarsanız:
+* **GitHub:** Bu depo üzerinden bir [Issue (Sorun)](https://github.com/astockman99/TITrack/issues) oluşturabilirsiniz.
+* **Discord:** Bana doğrudan ulaşabilirsiniz: `Nardona`
+
+---
 
 
 
