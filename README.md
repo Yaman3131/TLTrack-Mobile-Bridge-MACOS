@@ -455,14 +455,14 @@ cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack serve -
 
 ### English
 If you have any questions, encounter bugs, or need help with the setup:
-* **GitHub:** You can open an [Issue](https://github.com/astockman99/TITrack/issues) on this repository.
+* **GitHub:** You can open an [Issue](https://github.com/Yaman3131/TLTrack-Mobile-Bridge-MACOS-and-Windows-/issues) on this repository.
 * **Discord:** You can reach me directly at: `Nardona`
 
 ---
 
 ### Türkçe
 Herhangi bir sorunuz olursa, hata ile karşılaşırsanız veya kurulumda yardıma ihtiyaç duyarsanız:
-* **GitHub:** Bu depo üzerinden bir [Issue (Sorun)](https://github.com/astockman99/TITrack/issues) oluşturabilirsiniz.
+* **GitHub:** Bu depo üzerinden bir [Issue (Sorun)](https://github.com/Yaman3131/TLTrack-Mobile-Bridge-MACOS-and-Windows-/issues) oluşturabilirsiniz.
 * **Discord:** Bana doğrudan ulaşabilirsiniz: `Nardona`
 
 ---
