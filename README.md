@@ -111,7 +111,7 @@ Open **two separate** terminal windows.
 2.  Go to **Settings**.
 3.  Set **Game Directory** to your desktop data folder:
     * **Mac:** `/Users/YourUsername/Desktop/TLI_Data`
-    * **Windows:** `C:\Users\YourUsername\Desktop\TLI_Data`
+  
 4.  Enable **Cloud Sync** to fetch live market prices.
 
 ---
