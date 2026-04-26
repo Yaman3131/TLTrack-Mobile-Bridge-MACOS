@@ -82,7 +82,6 @@ mkdir -p ~/Desktop/TLI_Data && while true; do adb pull "/sdcard/Android/data/com
 ### 2. Install Required Libraries
 * **Mac:**
     ```bash
-    python3 -m pip install -r ~/Desktop/TITrack/requirements.txt
     python3 -m pip install supabase postgrest --break-system-packages
     ```
 
@@ -237,7 +236,6 @@ Yazılımın "fiyat çekme" ve "veritabanı" özelliklerinin çalışması için
 
 * **Mac Kullanıcıları:**
     ```bash
-    python3 -m pip install -r ~/Desktop/TITrack/requirements.txt
     python3 -m pip install supabase postgrest --break-system-packages
     ```
 
