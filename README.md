@@ -108,7 +108,8 @@ mkdir -p ~/Desktop/TLI_Data && while true; do adb pull "/sdcard/Android/data/com
 
 ### 1. Clone the Project
 * **Mac:** `cd ~/Desktop && git clone https://github.com/astockman99/TITrack.git`
-* **Windows:** `cd "$HOME\Desktop"; git clone https://github.com/astockman99/TITrack.git`
+* **Windows:** `winget install --id Git.Git -e --source winget
+*          cd "$HOME\Desktop"; git clone https://github.com/astockman99/TITrack.git`
 
 ### 2. Install Required Libraries
 * **Mac:**
