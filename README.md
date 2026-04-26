@@ -170,6 +170,9 @@ If you restart your computer, follow these 3 steps:
 > [!CAUTION]
 > If you restart your tablet, you may need to reconnect via cable once and run `adb tcpip 5555` to re-enable wireless debugging.
 
+<img width="1680" height="1050" alt="image" src="https://github.com/user-attachments/assets/c1d96973-81a8-46ba-a271-428e49caff19" />
+
+
 ---
 
 <a name="türkçe-versiyon"></a>
@@ -437,6 +440,9 @@ cd "$HOME\Desktop\TITrack"; $env:PYTHONPATH = ".\src"; python -m titrack serve -
 
 > [!CAUTION]
 > Tabletinizi tamamen kapatıp açtıysanız, kablosuz bağlantının tekrar aktif olması için bir kez kabloyla bağlayıp `adb tcpip 5555` komutunu vermeniz gerekebilir.
+
+<img width="1680" height="1050" alt="image" src="https://github.com/user-attachments/assets/035c2900-1e8c-4772-9148-690a8a36fe85" />
+
 
 ---
 
