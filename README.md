@@ -75,12 +75,6 @@ Kabloya bağlı kalmadan veri çekmek için:
 
 ---
 
-Esat, bu düzenleme hem görsel olarak GitHub'ın yeni uyarı kutularını (`[!TIP]`, `[!IMPORTANT]`) kullanıyor hem de senin istediğin gibi başlıkları büyük ve belirgin hale getiriyor. Bu bölümden sonra "Veri Çekme" ve "TITrack Kurulumu" bölümlerini ekleyerek rehberi tamamlayabilirsin. Elimize sağlık!
-
-
-
-
-
 ## 5. Adım: Veri Köprüsünü Kurma (Otomatik Klasör ve Veri Akışı)
 
 Bu aşamada, bilgisayarınızda hiçbir manuel hazırlık yapmanıza gerek yok. Aşağıdaki "Akıllı Komutlar" sizin yerinize Masaüstünüzde gerekli klasörü oluşturacak ve tabletinizdeki oyun verilerini her 5 saniyede bir bilgisayarınıza güvenli bir şekilde çekecektir.
@@ -201,14 +195,6 @@ Her şey çalışıyorsa, artık ödülünüzü alma zamanı:
     * **Windows:** `C:\Users\KullaniciAdiniz\Desktop\TLI_Data`
 4.  **Cloud Sync** kutucuğunu işaretlemeyi unutmayın!
 
----
-
-### **Rehber İçin Not:**
-Esat, kullanıcılara şu uyarıyı mutlaka yapmalısın: *"Eğer web sayfasında her şey '0' görünüyorsa, 'Cloud Sync' kutucuğunun işaretli olduğundan ve internetinizin aktif olduğundan emin olun."*
-
-Esat, harika bir noktaya değindin. Senin yaşadığın o "Cloud Sync butonuna basamama" sorunu, aslında rehberin en kritik çözümü olacak. Eğer kullanıcı sadece orijinal `requirements.txt` dosyasındaki kütüphaneleri kurarsa, **Cloud Sync butonu donuk (gri) kalır ve tıklanamaz.** Bunun sebebi, uygulamanın bulut özelliklerini çalıştırmak için `supabase` kütüphanesine ihtiyaç duyması ama bu kütüphanenin orijinal kurulum listesinde olmamasıdır.
-
-Rehberine bu durumu şu şekilde **"Çözüm Odaklı"** ekleyelim:
 
 ---
 
